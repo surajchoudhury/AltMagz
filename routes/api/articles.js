@@ -30,7 +30,7 @@ router.get("/:slug", (req, res) => {
     });
 });
 
-//find articles with categiries
+//find articles with categories
 
 router.get("/category/:collection", (req, res) => {
   let collection = req.params.collection;
@@ -97,6 +97,18 @@ router.put("/:slug", (req, res) => {
     });
   });
 });
+
+
+//delete an article
+
+router.delete('/:slug',(req,res)=> {
+  let slug = req.params.slug;
+  Article.findOneAndDelete({slug},(err,response)=> {
+    if(err) return res.json({err});
+    if(!response) return res.json({success:false,message:"can't find article!"})
+    res.json({success:true,message:"deleted succesfully"})
+  })
+})
 
 // ////////////////////////////////// claps ////////////////////////////////////
 

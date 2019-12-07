@@ -11,13 +11,8 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: true,
       unique: true,
       match: /@/
-    },
-    password: {
-      type: String,
-      required: true
     },
     article:{
       type:Schema.Types.ObjectId,

@@ -38,7 +38,7 @@ const articleSchema = new Schema(
 articleSchema.pre("save", function(next) {
   if (this.title && this.isModified("title")) {
     let slugged = slug(this.title, { lower: true });
-    this.slug = slugged;
+    this.slug = this._id+slugged;
     next();
   } else {
     next();
